@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, AlertCircle } from "lucide-react";
+import { fiscalesService } from "@/services/fiscales";
 
 const DEPARTAMENTOS = [
   { id: "1", nombre: "Capital" },
@@ -54,13 +55,37 @@ export default function RegistrationForm() {
     try {
       setSubmitMessage(null);
       setIsSubmitting(true);
-      console.log("Datos del formulario:", values);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitMessage({ type: 'success', message: 'Usuario creado exitosamente' });
+      
+      // Verificar si el DNI ya existe
+      const fiscalExistente = await fiscalesService.buscarPorDni(values.dni);
+      if (fiscalExistente) {
+        setSubmitMessage({ 
+          type: 'error', 
+          message: 'Ya existe un fiscal registrado con este DNI' 
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Crear el fiscal en Supabase
+      await fiscalesService.crearFiscal({
+        nombre: values.nombre,
+        apellido: values.apellido,
+        dni: values.dni,
+        departamento_id: values.departamento,
+        escuela_id: values.escuela,
+      });
+
+      setSubmitMessage({ 
+        type: 'success', 
+        message: 'Fiscal general registrado exitosamente' 
+      });
       form.reset();
     } catch (error) {
-      setSubmitMessage({ type: 'error', message: error instanceof Error ? error.message : "Error al crear el usuario" });
-      setTimeout(() => setSubmitMessage(null), 5000);
+      setSubmitMessage({ 
+        type: 'error', 
+        message: error instanceof Error ? error.message : "Error al registrar el fiscal" 
+      });
     } finally {
       setIsSubmitting(false);
     }
