@@ -155,7 +155,7 @@ export default function RegistrationForm() {
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="tipoFiscal" render={({ field }) => (
-                  <FormItem className="flex flex-col">
+                  <FormItem>
                     <FormLabel>Tipo de Fiscal*</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -189,7 +189,7 @@ export default function RegistrationForm() {
                 )} />
               </div>
               <FormField control={form.control} name="departamento" render={({ field }) => (
-                <FormItem className="flex flex-col">
+                <FormItem>
                   <FormLabel>Departamento*</FormLabel>
                   <Popover open={openDepartamento} onOpenChange={setOpenDepartamento}>
                     <PopoverTrigger asChild>
@@ -221,7 +221,7 @@ export default function RegistrationForm() {
                 </FormItem>
               )} />
               <FormField control={form.control} name="escuela" render={({ field }) => (
-                <FormItem className="flex flex-col">
+                <FormItem>
                   <FormLabel>Escuela*</FormLabel>
                   <Popover open={openEscuela} onOpenChange={setOpenEscuela}>
                     <PopoverTrigger asChild>
@@ -275,7 +275,7 @@ export default function RegistrationForm() {
                 </div>
               )}
               <Button type="submit" disabled={isSubmitting} className="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 rounded-xl">
-                {isSubmitting ? "CREANDO..." : "CREAR"}
+                {isSubmitting ? "REGISTRANDO..." : "REGISTRAR"}
               </Button>
             </form>
           </Form>
