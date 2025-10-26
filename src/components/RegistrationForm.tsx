@@ -33,7 +33,7 @@ export default function RegistrationForm() {
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { nombre: "", apellido: "", dni: "", tipoFiscal: "", departamento: "", escuela: "" },
+    defaultValues: { nombre: "", apellido: "", dni: "", tipoFiscal: "general", departamento: "", escuela: "" },
   });
 
   const departamentoSeleccionado = form.watch("departamento");
@@ -157,33 +157,14 @@ export default function RegistrationForm() {
                 <FormField control={form.control} name="tipoFiscal" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Tipo de Fiscal*</FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button variant="outline" role="combobox" className={cn("w-full rounded-xl h-12 justify-between", !field.value && "text-muted-foreground")}>
-                            {field.value === 'general' ? 'Fiscal General' : field.value === 'mesa' ? 'Fiscal de Mesa' : "Selecciona tipo"}
-                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-full p-0">
-                        <Command>
-                          <CommandList>
-                            <CommandEmpty>No se encontraron resultados.</CommandEmpty>
-                            <CommandGroup>
-                              <CommandItem value="general" onSelect={() => { form.setValue("tipoFiscal", "general"); }}>
-                                <Check className={cn("mr-2 h-4 w-4", field.value === "general" ? "opacity-100" : "opacity-0")} />
-                                Fiscal General
-                              </CommandItem>
-                              <CommandItem value="mesa" onSelect={() => { form.setValue("tipoFiscal", "mesa"); }}>
-                                <Check className={cn("mr-2 h-4 w-4", field.value === "mesa" ? "opacity-100" : "opacity-0")} />
-                                Fiscal de Mesa
-                              </CommandItem>
-                            </CommandGroup>
-                          </CommandList>
-                        </Command>
-                      </PopoverContent>
-                    </Popover>
+                    <FormControl>
+                      <Input 
+                        value="Fiscal General" 
+                        disabled 
+                        readOnly
+                        className="rounded-xl h-12 bg-muted cursor-not-allowed text-foreground" 
+                      />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />

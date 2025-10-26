@@ -28,7 +28,7 @@ API REST desarrollada con Express y PostgreSQL para gestionar escuelas, mesas, f
 
 ## 📌 Base URL
 ```
-https://api-fiscaleslla.onrender.com
+https://api-fiscalizacion-2025.onrender.com
 ```
 
 ## 👥 Sistema de Roles

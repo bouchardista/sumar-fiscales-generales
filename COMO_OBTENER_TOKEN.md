@@ -9,7 +9,7 @@ Necesitas hacer login en la API con credenciales de un usuario con rol **Fiscal 
 ### Usando curl:
 
 ```bash
-curl -X POST https://api-fiscaleslla.onrender.com/login/loginUsuario \
+curl -X POST https://api-fiscalizacion-2025.onrender.com/login/loginUsuario \
   -H "Content-Type: application/json" \
   -d '{
     "DNI": "TU_DNI_AQUI",
@@ -20,7 +20,7 @@ curl -X POST https://api-fiscaleslla.onrender.com/login/loginUsuario \
 ### Usando Postman o Insomnia:
 
 ```
-POST https://api-fiscaleslla.onrender.com/login/loginUsuario
+POST https://api-fiscalizacion-2025.onrender.com/login/loginUsuario
 Content-Type: application/json
 
 {
