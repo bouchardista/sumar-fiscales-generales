@@ -72,7 +72,7 @@ const Hero = () => {
               <h1 className="text-5xl md:text-7xl font-bold leading-tight" style={{
                 animation: showContent ? 'fadeInUp 0.8s ease-out 0.1s both' : 'none'
               }}>
-                <span className="block">SUMATE A</span>
+                <span className="block">SUMÁ A</span>
                 <span className="block text-yellow-400">FISCALIZAR</span>
               </h1>
               
