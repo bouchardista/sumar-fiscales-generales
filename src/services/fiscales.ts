@@ -5,6 +5,7 @@ export interface FiscalGeneral {
   nombre: string;
   apellido: string;
   dni: string;
+  tipo_fiscal: string;
   departamento_id: string;
   escuela_id: string;
   created_at?: string;
