@@ -95,7 +95,7 @@ export default function RegistrationForm() {
     <div className="w-full" id="registration-form">
       <div className="max-w-2xl mx-auto">
         <Card className="p-8 border-2 border-primary/20 rounded-3xl bg-card shadow-lg">
-          <h2 className="text-2xl font-bold text-center mb-6">Registro de Usuario</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Registro Interno de Fiscales Generales</h2>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

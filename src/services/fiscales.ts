@@ -14,6 +14,8 @@ export interface FiscalGeneral {
 export const fiscalesService = {
   // Crear un nuevo fiscal general
   async crearFiscal(fiscal: Omit<FiscalGeneral, 'id' | 'created_at' | 'updated_at'>) {
+    console.log('📝 Intentando crear fiscal:', fiscal);
+    
     const { data, error } = await supabase
       .from('fiscales_generales')
       .insert([fiscal])
@@ -21,10 +23,11 @@ export const fiscalesService = {
       .single();
 
     if (error) {
-      console.error('Error al crear fiscal:', error);
-      throw new Error(error.message);
+      console.error('❌ Error al crear fiscal:', error);
+      throw new Error(`Error al crear fiscal: ${error.message}`);
     }
 
+    console.log('✅ Fiscal creado exitosamente:', data);
     return data;
   },
 
@@ -45,6 +48,8 @@ export const fiscalesService = {
 
   // Buscar fiscal por DNI
   async buscarPorDni(dni: string) {
+    console.log('🔍 Buscando fiscal con DNI:', dni);
+    
     const { data, error } = await supabase
       .from('fiscales_generales')
       .select('*')
@@ -52,10 +57,11 @@ export const fiscalesService = {
       .single();
 
     if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found
-      console.error('Error al buscar fiscal:', error);
-      throw new Error(error.message);
+      console.error('❌ Error al buscar fiscal:', error);
+      throw new Error(`Error al buscar fiscal: ${error.message}`);
     }
 
+    console.log('🔍 Resultado búsqueda:', data ? '✅ Encontrado' : '❌ No encontrado');
     return data;
   },
 
